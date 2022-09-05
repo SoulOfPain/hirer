@@ -3,11 +3,24 @@ package ru.berulla.hirer.employee;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Setter
 @Getter
+@Entity
+@Table
 public class EmployeeModel {
+    @Id
+    @SequenceGenerator(
+            name = "employee_sequence",
+            sequenceName = "employee_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "employee_sequence"
+    )
     private Long id;
     private String name;
     private String email;
