@@ -17,7 +17,6 @@ public class EmployeeConfig {
                     "Cris",
                     "first@mail.com",
                     LocalDate.now(),
-                    21,
                     1
             );
 
@@ -25,7 +24,6 @@ public class EmployeeConfig {
                     "Dave",
                     "first@mail.com",
                     LocalDate.of(2000, 3, 28),
-                    22,
                     1
             );
 

@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.Period;
 
 @Setter
 @Getter
@@ -25,26 +26,29 @@ public class EmployeeModel {
     private String name;
     private String email;
     private LocalDate dateOfBirth;
+    @Transient
     private Integer age;
     private Integer experience;
 
-    public EmployeeModel(String name, String email, LocalDate dateOfBirth, Integer age, Integer experience) {
+    public EmployeeModel(String name, String email, LocalDate dateOfBirth, Integer experience) {
         this.name = name;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
-        this.age = age;
         this.experience = experience;
     }
 
-    public EmployeeModel(Long id, String name, String email, LocalDate dateOfBirth, Integer age, Integer experience) {
+    public EmployeeModel(Long id, String name, String email, LocalDate dateOfBirth,  Integer experience) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
-        this.age = age;
         this.experience = experience;
     }
 
     public EmployeeModel() {
+    }
+
+    public Integer getAge() {
+        return Period.between(dateOfBirth, LocalDate.now()).getYears();
     }
 }
