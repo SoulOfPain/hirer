@@ -23,4 +23,12 @@ public class EmployeeService {
         }
         employeeRepository.save(employee);
     }
+
+    public void deleteEmployee(Long id) {
+        boolean exists = employeeRepository.existsById(id);
+        if (!exists) {
+            throw new IllegalStateException(String.format("the employee with id %s does not exists", id));
+        }
+        employeeRepository.deleteById(id);
+    }
 }
