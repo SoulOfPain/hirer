@@ -1,9 +1,7 @@
 package ru.berulla.hirer.employee;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -16,6 +14,11 @@ public class EmployeeController {
     @GetMapping
     public List<EmployeeModel> getEmployees() {
         return employeeService.getEmployees();
+    }
+
+    @PostMapping
+    public void registerEmployee(@RequestBody EmployeeModel employee) {
+        employeeService.addNewEmployee(employee);
     }
 
 }
